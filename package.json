@@ -1,0 +1,15 @@
+{
+  "name": "the-world-from-below",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Editorial CMS for The World From Below — Phase 0 + Phase 1",
+  "scripts": {
+    "dev:studio": "npm --prefix sanity run dev",
+    "dev:web": "npm --prefix web run dev",
+    "typecheck": "npm --prefix sanity run typecheck && npm --prefix web run typecheck",
+    "lint": "npm --prefix sanity run lint && npm --prefix web run lint",
+    "build": "npm --prefix sanity run build && npm --prefix web run build",
+    "test": "npm --prefix sanity run test && npm --prefix web run test && npm --prefix sanity run test:acceptance",
+    "verify:groq": "npm --prefix web run verify:groq"
+  }
+}

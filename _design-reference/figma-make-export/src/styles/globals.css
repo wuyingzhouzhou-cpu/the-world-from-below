@@ -1,0 +1,105 @@
+/* globals.css
+ * Design tokens (CSS custom properties), editorial mood variants,
+ * and base document styles.
+ *
+ * DESIGN TOKENS
+ * All visual decisions are expressed as CSS custom properties on :root.
+ * Mood variants override a subset of these tokens via data-mood attribute.
+ *
+ * BREAKPOINTS (Tailwind defaults used throughout)
+ *   sm  640px
+ *   md  768px
+ *   lg  1024px
+ *   xl  1280px
+ *
+ * CONTENT WIDTHS
+ *   Max page width:    1400px  (most sections)
+ *   Max article width: 1200px  (feature articles with sidebar)
+ *   Max reading width:  720px  (essay / field note body)
+ */
+
+:root {
+  /* Background */
+  --pub-bg:        #F3EFE6;   /* warm paper off-white */
+  --pub-card:      #EAE5DB;   /* slightly deeper card surface */
+
+  /* Foreground */
+  --pub-fg:        #1A1510;   /* near-black warm ink */
+  --pub-fg-muted:  #6B6058;   /* secondary text */
+  --pub-fg-faint:  #9A9088;   /* metadata / marginalia */
+
+  /* Border */
+  --pub-border:    #D0C9BE;   /* hairline rule */
+
+  /* Accent */
+  --pub-accent:    #8C3527;   /* restrained red-brown */
+
+  /* Typography families */
+  --font-display:  'Fraunces', serif;   /* headlines, display text */
+  --font-ui:       'Inter', sans-serif; /* labels, metadata, UI */
+  --font-reading:  'Lora', serif;       /* body reading text */
+}
+
+/* ── Editorial Moods ──────────────────────────────────────────────────────
+ * Applied via: document.body.setAttribute('data-mood', 'cinematic')
+ * Each mood overrides only the tokens that change.
+ */
+
+body[data-mood="cinematic"] {
+  --pub-bg:       #0F0E0C;
+  --pub-fg:       #E8E2D8;
+  --pub-fg-muted: #9A9088;
+  --pub-fg-faint: #5A5450;
+  --pub-border:   #2A2820;
+  --pub-accent:   #C49B3C;
+  --pub-card:     #1A1814;
+}
+
+body[data-mood="quiet"] {
+  --pub-accent:  #3D5E38;
+  --pub-border:  #DDD8D0;
+  --pub-card:    #F0EDE8;
+  --pub-bg:      #F7F5F1;
+}
+
+body[data-mood="archive"] {
+  --pub-bg:      #EDE6D8;
+  --pub-accent:  #7A6040;
+  --pub-border:  #CEC5B4;
+  --pub-card:    #E4DDD0;
+}
+
+body[data-mood="minimal"] {
+  --pub-bg:      #FAFAF8;
+  --pub-accent:  #1A1510;
+  --pub-border:  #E2DDD8;
+  --pub-card:    #F4F4F2;
+}
+
+/* ── Base document ────────────────────────────────────────────────────── */
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  background-color: var(--pub-bg);
+  color: var(--pub-fg);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.5s ease, color 0.3s ease;
+}
+
+/* Hide scrollbar (decorative only — content remains scrollable) */
+*::-webkit-scrollbar { width: 0; }
+*                    { scrollbar-width: none; }
+
+/* Focus ring */
+*:focus-visible {
+  outline: 2px solid var(--pub-accent);
+  outline-offset: 3px;
+  border-radius: 1px;
+}

@@ -1,0 +1,181 @@
+[
+  {
+    "_id": "siteSettings",
+    "_type": "siteSettings",
+    "title": "The World From Below",
+    "question": "How do ordinary people live in a world they didn't design?",
+    "tagline": "Stories, books and images about ordinary lives inside history, culture and forces larger than ourselves.",
+    "newsletterName": "Letters From Below",
+    "newsletterDescription": "One story, one question, and something worth reading.",
+    "homepageCover": "photo"
+  },
+  {
+    "_id": "place.shenyang",
+    "_type": "place",
+    "name": "Shenyang",
+    "slug": {"_type": "slug", "current": "shenyang"},
+    "country": "China",
+    "region": "Northeast",
+    "summary": "Once the iron heart of Chinese socialist industry. After the layoffs, a city reckoning with what remains."
+  },
+  {
+    "_id": "force.work",
+    "_type": "force",
+    "name": "Work",
+    "slug": {"_type": "slug", "current": "work"},
+    "question": "What does labour do to a life — not just economically, but psychologically, socially, temporally?",
+    "description": "Work organizes time, identity, community, and status. When it disappears, something larger than income is lost."
+  },
+  {
+    "_id": "author.unassigned",
+    "_type": "author",
+    "name": "[Author Name]",
+    "slug": {"_type": "slug", "current": "author-name"},
+    "bio": "Placeholder byline — no author has been assigned to this editorial demo."
+  },
+  {
+    "_id": "library.factory-girls",
+    "_type": "libraryItem",
+    "title": "Factory Girls",
+    "slug": {"_type": "slug", "current": "factory-girls"},
+    "creator": "Leslie T. Chang",
+    "year": 2008,
+    "medium": "book",
+    "whyICame": "A documented account of factory labour in China, used here as a library relation for CMS query verification."
+  },
+  {
+    "_id": "story.editorial-demo-essay",
+    "_type": "story",
+    "storyType": "essay",
+    "visualMood": "quiet",
+    "title": "Editorial Demo Essay",
+    "dek": "Placeholder essay used to verify related-story references in the CMS. Not a published piece.",
+    "slug": {"_type": "slug", "current": "editorial-demo-essay"},
+    "publishedAt": "2026-08-15T12:00:00.000Z",
+    "editorialStatus": "draft",
+    "authors": [{"_type": "reference", "_ref": "author.unassigned", "_key": "author1"}],
+    "body": [
+      {
+        "_type": "block",
+        "_key": "e1",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "e1s1",
+            "text": "This is an editorial demo essay. It exists so the CMS can store a related-story reference. It is not reported work.",
+            "marks": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": "story.when-the-factory-closed",
+    "_type": "story",
+    "storyType": "feature",
+    "visualMood": "documentary",
+    "title": "When the Factory Closed",
+    "dek": "In the industrial northeast of China, the collapse of the state-owned work unit meant more than unemployment. It meant the end of a world.",
+    "slug": {"_type": "slug", "current": "when-the-factory-closed"},
+    "publishedAt": "2026-09-01T12:00:00.000Z",
+    "editorialStatus": "in-review",
+    "authors": [{"_type": "reference", "_ref": "author.unassigned", "_key": "author1"}],
+    "places": [{"_type": "reference", "_ref": "place.shenyang", "_key": "place1"}],
+    "forces": [{"_type": "reference", "_ref": "force.work", "_key": "force1"}],
+    "relatedLibraryItems": [{"_type": "reference", "_ref": "library.factory-girls", "_key": "work1"}],
+    "relatedStories": [{"_type": "reference", "_ref": "story.editorial-demo-essay", "_key": "rel1"}],
+    "hero": {
+      "_type": "editorialImage",
+      "externalUrl": "https://images.unsplash.com/photo-1569167419666-e94167ac991d?w=1600&auto=format",
+      "alt": "PLACEHOLDER IMAGE — industrial scene, editorial demo",
+      "caption": "PLACEHOLDER IMAGE · EXAMPLE CAPTION · editorial demo only. Not a verified historical photograph.",
+      "provenanceStatus": "placeholder",
+      "rights": "placeholder"
+    },
+    "body": [
+      {
+        "_type": "block",
+        "_key": "p1",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "p1s1",
+            "text": "The factory gates at a state-owned machinery complex opened for the last time on a February morning in the late 1990s. Nobody photographed the moment.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "pullQuote",
+        "_key": "pq1",
+        "text": "The danwei was not just a place of work. It was a city inside a city."
+      },
+      {
+        "_type": "bodyImage",
+        "_key": "bi1",
+        "externalUrl": "https://images.unsplash.com/photo-1586776699177-b9d70feea1cd?w=1200&auto=format",
+        "alt": "PLACEHOLDER IMAGE — workers at a doorway, editorial demo",
+        "caption": "PLACEHOLDER IMAGE · EXAMPLE CAPTION · editorial demo only. Not a verified historical photograph.",
+        "credit": "",
+        "source": "Editorial demo",
+        "rights": "placeholder",
+        "provenanceStatus": "placeholder"
+      },
+      {
+        "_type": "wideImage",
+        "_key": "wi1",
+        "externalUrl": "https://images.unsplash.com/photo-1567951171134-c7dccd06cf39?w=1600&auto=format",
+        "alt": "PLACEHOLDER IMAGE — train station concourse, editorial demo",
+        "caption": "PLACEHOLDER IMAGE · EXAMPLE CAPTION · editorial demo only.",
+        "source": "Editorial demo",
+        "rights": "placeholder",
+        "provenanceStatus": "placeholder"
+      },
+      {
+        "_type": "aside",
+        "_key": "as1",
+        "heading": "Context",
+        "body": "The layoffs of the 1990s — what economists called structural adjustment and what workers called xiagang — displaced tens of millions of workers across China."
+      },
+      {
+        "_type": "sourceQuote",
+        "_key": "sq1",
+        "text": "The hardest thing was explaining to your children why, after 30 years, you were no longer needed.",
+        "attribution": "Interview subject, editorial demo",
+        "source": "Editorial demo interview notes — not a verified oral history",
+        "year": "1990s"
+      },
+      {
+        "_type": "block",
+        "_key": "p2",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "p2s1",
+            "text": "What the 1990s destroyed was not just employment. It destroyed a particular theory of security.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "_type": "sourceEntry",
+        "_key": "src1",
+        "citation": "Ching Kwan Lee, Against the Law: Labor Protests in China's Rustbelt and Sunbelt (2007)",
+        "note": "Secondary source for the industrial layoff context."
+      },
+      {
+        "_type": "sourceEntry",
+        "_key": "src2",
+        "citation": "Leslie T. Chang, Factory Girls (2008)"
+      }
+    ]
+  }
+]

@@ -1,0 +1,4 @@
+@import './styles/typography.css';
+@import 'tailwindcss';
+@import './styles/globals.css';
+@import './styles/editorial.css';

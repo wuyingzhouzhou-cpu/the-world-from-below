@@ -1,0 +1,65 @@
+/* Surfaces */
+:root {
+  --paper: #f3efe6;
+  --page-surround: #cfc6b8;
+  --ink: #1a1510;
+  --ink-muted: #6b6058;
+  --ink-faint: #9a9088;
+  --accent: #8c3527;
+  --rule: #d0c9be;
+  --card: #eae5db;
+  --dark-paper: #0f0e0c;
+
+  --text-kicker: 0.5625rem;
+  --text-meta: 0.6875rem;
+  --text-caption: 0.5625rem;
+  --text-body: 1.1rem;
+  --text-dek: 1.15rem;
+  --text-quote: clamp(1.25rem, 2vw, 1.65rem);
+  --text-h1: clamp(2.1rem, 5.5vw, 5rem);
+  --text-h2: 0.85rem;
+  --leading-body: 1.82;
+  --leading-dek: 1.65;
+  --leading-quote: 1.42;
+
+  --sheet-max-width: 1200px;
+  --site-max-width: 1400px;
+  --reading-width: 720px;
+  --wide-media-width: 1034px;
+  --full-media-width: 1200px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 44px;
+  --space-9: 52px;
+  --space-10: 64px;
+
+  --page-gutter: 1.5rem;
+  --sheet-gutter: 1.5rem;
+}
+
+/* next/font variables live on html/body. Resolve stacks here so :root
+   does not freeze var(--font-fraunces) as invalid before those classes apply. */
+body {
+  --font-editorial: var(--font-fraunces), 'Fraunces', serif;
+  --font-ui: var(--font-inter), 'Inter', sans-serif;
+  --font-reading: var(--font-lora), 'Lora', serif;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --sheet-gutter: 3rem;
+    --page-gutter: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --page-gutter: 1.75rem;
+  }
+}

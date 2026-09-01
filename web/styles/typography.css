@@ -1,0 +1,99 @@
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--page-surround);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+p,
+blockquote,
+figure,
+ul,
+ol {
+  margin: 0;
+}
+
+a {
+  color: var(--accent);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.story-title {
+  font-family: var(--font-editorial);
+  font-weight: 700;
+  font-size: var(--text-h1);
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+}
+
+.story-dek {
+  font-family: var(--font-reading);
+  font-style: italic;
+  font-size: var(--text-dek);
+  line-height: var(--leading-dek);
+  color: var(--ink-muted);
+  max-width: 560px;
+}
+
+.story-body-copy {
+  font-family: var(--font-reading);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--ink);
+}
+
+.story-body-copy + .story-body-copy {
+  margin-top: var(--space-6);
+}
+
+.story-kicker {
+  font-family: var(--font-ui);
+  font-size: var(--text-kicker);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.story-h2,
+.story-h3 {
+  font-family: var(--font-ui);
+  font-size: var(--text-h2);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: var(--space-8) 0 var(--space-4);
+}
+
+.story-h3 {
+  letter-spacing: 0.06em;
+  color: var(--ink-muted);
+}
