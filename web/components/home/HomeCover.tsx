@@ -1,18 +1,36 @@
 import Link from 'next/link'
 import {StoryMarginalia} from '@/components/story/StoryMarginalia'
 import type {HomepageView} from '@/sanity/home'
-import {editorialImageSrc, type EditorialImageFields} from '@/sanity/image'
+import {
+  COVER_IMAGE_WIDTHS,
+  coverImageSizes,
+} from '@/lib/coverImage'
+import {
+  editorialImageSrc,
+  srcsetFor,
+  type EditorialImageFields,
+} from '@/sanity/image'
 import {STORY_TYPE_LABELS} from '@/sanity/story'
 
-function LeadImage({image, className}: {image?: Record<string, unknown>; className: string}) {
+function LeadImage({
+  image,
+  className,
+  layout = 'photo',
+}: {
+  image?: Record<string, unknown>
+  className: string
+  layout?: 'photo' | 'split'
+}) {
   if (!image) return <div className={className} />
-  const src = editorialImageSrc(image as EditorialImageFields, 1600)
-  const alt = String((image as EditorialImageFields).alt || '')
+  const fields = image as EditorialImageFields
+  const src = editorialImageSrc(fields, 1440)
+  const srcset = srcsetFor(fields, [...COVER_IMAGE_WIDTHS])
+  const alt = String(fields.alt || '')
   return (
     <div className={className}>
       {src ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={src} alt={alt} />
+        <img src={src} srcSet={srcset} sizes={coverImageSizes(layout)} alt={alt} />
       ) : null}
     </div>
   )
@@ -96,7 +114,7 @@ export function SplitCover({home}: {home: HomepageView}) {
   return (
     <section className="band">
       <div className="cover-split">
-        <LeadImage image={lead.hero} className="cover-split-image" />
+        <LeadImage image={lead.hero} className="cover-split-image" layout="split" />
         <div className="cover-split-text">
           <span className="story-kicker">{STORY_TYPE_LABELS[lead.storyType]} Story</span>
           <h2 className="cover-headline">{lead.title}</h2>

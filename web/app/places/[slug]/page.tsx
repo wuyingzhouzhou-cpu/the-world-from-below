@@ -3,7 +3,8 @@ import {PaperSheet} from '@/components/layout/PaperSheet'
 import {pageMetadata} from '@/lib/metadata'
 import {asPlace} from '@/sanity/home'
 import {client} from '@/sanity/client'
-import {placeBySlugQuery, storiesByPlaceQuery} from '@/sanity/queries'
+import {libraryItemsByPlaceQuery, placeBySlugQuery, storiesByPlaceQuery} from '@/sanity/queries'
+import {toRelatedLibraryItems} from '@/sanity/library'
 import {toStoryViewModel, type StoryViewModel} from '@/sanity/story'
 import {editorialImageSrc, type EditorialImageFields} from '@/sanity/image'
 import {notFound} from 'next/navigation'
@@ -25,6 +26,7 @@ export default async function PlaceDetailPage({params}: PageProps) {
   const related: StoryViewModel[] = (await client.fetch(storiesByPlaceQuery, {placeId: place.id}) || []).map(
     (item: Record<string, unknown>) => toStoryViewModel(item),
   )
+  const library = toRelatedLibraryItems(await client.fetch(libraryItemsByPlaceQuery, {placeId: place.id}))
 
   return (
     <PaperSheet width="site">
@@ -65,6 +67,17 @@ export default async function PlaceDetailPage({params}: PageProps) {
               <p className="empty-note">No related stories yet.</p>
             )}
           </section>
+          {library.length ? (
+            <section style={{marginTop: 48}}>
+              <p className="section-label">Library</p>
+              {library.map((item) => (
+                <Link key={item.id} href={`/library/${item.slug}`} className="story-row" style={{paddingLeft: 0, paddingRight: 0}}>
+                  <h2>{item.title}</h2>
+                  {item.creator ? <p className="marginalia">{item.creator}</p> : null}
+                </Link>
+              ))}
+            </section>
+          ) : null}
         </div>
       </main>
     </PaperSheet>

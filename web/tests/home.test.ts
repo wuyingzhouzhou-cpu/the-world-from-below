@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import {resolveCoverMode} from '../lib/cover.ts'
+import {COVER_IMAGE_WIDTHS, coverImageSizes, srcsetFromUrl} from '../lib/coverImage.ts'
 import {toHomepageView} from '../sanity/home.ts'
 
 const feature = {
@@ -44,4 +45,22 @@ test('featured story projection excludes the lead', () => {
     ],
   })
   assert.equal(home.featuredStory?.slug, 'editorial-demo-essay')
+})
+
+test('homepage cover srcset includes 390 through 1440', () => {
+  assert.deepEqual([...COVER_IMAGE_WIDTHS], [390, 768, 1024, 1440, 1920])
+  const srcset = srcsetFromUrl(
+    'https://images.unsplash.com/photo-x?w=1600&auto=format',
+    [...COVER_IMAGE_WIDTHS],
+  )
+  assert.match(String(srcset), /w=390/)
+  assert.match(String(srcset), /390w/)
+  assert.match(String(srcset), /768w/)
+  assert.match(String(srcset), /1024w/)
+  assert.match(String(srcset), /1440w/)
+})
+
+test('cover sizes distinguish photo and split layouts', () => {
+  assert.match(coverImageSizes('photo'), /100vw/)
+  assert.match(coverImageSizes('split'), /767px/)
 })

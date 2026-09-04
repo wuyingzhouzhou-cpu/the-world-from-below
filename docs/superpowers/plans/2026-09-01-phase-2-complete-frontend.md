@@ -14,6 +14,10 @@ Ship the full public editorial frontend for The World From Below, reusing the Ph
 - `[Author Name]` is not a byline — omit it.
 - No newsletter backend, no maps, no ratings, no fake issue metadata.
 
+## Approved Phase 2 schema extension: siteSettings.homepageCover
+
+`siteSettings.homepageCover` was added during Phase 2 as the editorial control for `photo` | `typographic` | `split`. Readers cannot switch it. The public homepage reads the stored value. Fallback: hero exists → photo; no hero → typographic. Do not remove this field.
+
 ## Architecture
 
 ```

@@ -169,6 +169,12 @@ export const libraryItemsByForceQuery = defineQuery(`
   }
 `)
 
+export const libraryItemsByPlaceQuery = defineQuery(`
+  *[_type == "libraryItem" && $placeId in places[]._ref] | order(title asc) {
+    _id, title, "slug": slug.current, creator, year, medium
+  }
+`)
+
 export const allLibraryItemsQuery = defineQuery(`
   *[_type == "libraryItem"] | order(title asc) {
     _id, title, "slug": slug.current, creator, year, medium,

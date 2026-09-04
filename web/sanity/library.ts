@@ -29,6 +29,35 @@ export function libraryMediumLabel(value?: string) {
   return value
 }
 
+export type RelatedLibraryItem = {
+  id: string
+  title: string
+  slug?: string
+  creator?: string
+  year?: number
+  medium?: string
+}
+
+export function toRelatedLibraryItems(raw: unknown): RelatedLibraryItem[] {
+  if (!Array.isArray(raw)) return []
+  return raw.flatMap((item) => {
+    if (!item || typeof item !== 'object') return []
+    const row = item as Record<string, unknown>
+    const title = text(row.title)
+    if (!title) return []
+    return [
+      {
+        id: String(row._id || row.id || title),
+        title,
+        slug: text(row.slug),
+        creator: text(row.creator),
+        year: typeof row.year === 'number' ? row.year : undefined,
+        medium: text(row.medium),
+      },
+    ]
+  })
+}
+
 function text(value: unknown): string | undefined {
   return typeof value === 'string' && value.trim() ? value : undefined
 }

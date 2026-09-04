@@ -1,8 +1,10 @@
 import {createImageUrlBuilder, type SanityImageSource} from '@sanity/image-url'
 import {dataset, projectId} from './client'
+import {withRequestedWidth} from '../lib/coverImage.ts'
 
 export type {ImagePresentation} from './imagePolicy'
 export {imagePublicationState, presentationFromBlockType} from './imagePolicy'
+export {COVER_IMAGE_WIDTHS, coverImageSizes} from '../lib/coverImage.ts'
 
 export type EditorialImageFields = {
   alt?: string
@@ -41,14 +43,14 @@ export function editorialImageSrc(
   if (!value) return undefined
   const fromAsset = sanityImageUrl(value.image as SanityImageSource | undefined, width)
   if (fromAsset) return fromAsset
-  return value.externalUrl || undefined
+  return value.externalUrl ? withRequestedWidth(value.externalUrl, width) : undefined
 }
 
 export function srcsetFor(value: EditorialImageFields | undefined, widths: number[]): string | undefined {
-  if (!value?.image) return undefined
+  if (!value) return undefined
   const parts = widths
     .map((width) => {
-      const url = sanityImageUrl(value.image as SanityImageSource, width)
+      const url = editorialImageSrc(value, width)
       return url ? `${url} ${width}w` : undefined
     })
     .filter(Boolean)

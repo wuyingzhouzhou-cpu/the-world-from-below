@@ -41,7 +41,8 @@
     "creator": "Leslie T. Chang",
     "year": 2008,
     "medium": "book",
-    "whyICame": "A documented account of factory labour in China, used here as a library relation for CMS query verification."
+    "whyICame": "A documented account of factory labour in China, used here as a library relation for CMS query verification.",
+    "places": [{"_type": "reference", "_ref": "place.shenyang", "_key": "place1"}]
   },
   {
     "_id": "story.editorial-demo-essay",
