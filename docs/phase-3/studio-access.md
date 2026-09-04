@@ -4,7 +4,9 @@ Recommendation for first launch: **keep Studio local**. Do not deploy a public S
 
 ## Why not deploy now
 
-- The project may still be unclaimed (uploads limited; claim link in the original Sanity welcome flow).
+- The project may still be unclaimed (uploads limited). Claim as the owner before 4 September 2026, 12:00 UTC:
+
+https://www.sanity.io/manage/claim/9Vcl0eCCFXhYMG_yZxOKvoKCRyo8Kk92ArTRc1xCmUY
 - `npx sanity deploy` publishes a `*.sanity.studio` host. That is fine after you own the project and Sanity login is required; it is unnecessary for launch of the public Next.js site.
 - Presentation preview origin is `SANITY_STUDIO_PREVIEW_ORIGIN` or `http://localhost:3000`.
 

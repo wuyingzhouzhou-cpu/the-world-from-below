@@ -28,7 +28,13 @@ Copy `.env.example` to `web/.env.local` and `sanity/.env.local`. Use `NEXT_PUBLI
 
 Keep Studio local/admin-only for first launch. Do not deploy an unsecured Studio. After the Sanity project is claimed, `cd sanity && npm run deploy` is optional.
 
-Project id `e0cbf8ib`, dataset `production`. Unclaimed projects expire; claiming is a manual owner action (see the claim URL in git history / Sanity welcome email if still valid).
+Project id `e0cbf8ib`, dataset `production`. Unclaimed projects expire.
+
+Claim (owner only — anyone with the link becomes the owner, do not share it):
+
+https://www.sanity.io/manage/claim/9Vcl0eCCFXhYMG_yZxOKvoKCRyo8Kk92ArTRc1xCmUY
+
+Deadline: 4 September 2026, 12:00 UTC.
 
 ## Environment variables
 
