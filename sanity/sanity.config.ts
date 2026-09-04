@@ -18,7 +18,7 @@ export default defineConfig({
     structureTool({structure, defaultDocumentNode}),
     presentationTool({
       previewUrl: {
-        origin: 'http://localhost:3000',
+        origin: process.env.SANITY_STUDIO_PREVIEW_ORIGIN || 'http://localhost:3000',
         preview: '/',
       },
       resolve: {
