@@ -195,6 +195,30 @@ export const libraryItemBySlugQuery = defineQuery(`
   }
 `)
 
+export const sitemapDocumentsQuery = defineQuery(`
+  {
+    "stories": *[_type == "story" && defined(slug.current)] | order(coalesce(publishedAt, _updatedAt) desc) {
+      "slug": slug.current, publishedAt, _updatedAt
+    },
+    "places": *[_type == "place" && defined(slug.current)] | order(name asc) {
+      "slug": slug.current, _updatedAt
+    },
+    "forces": *[_type == "force" && defined(slug.current)] | order(name asc) {
+      "slug": slug.current, _updatedAt
+    },
+    "library": *[_type == "libraryItem" && defined(slug.current)] | order(title asc) {
+      "slug": slug.current, _updatedAt
+    }
+  }
+`)
+
+export const rssStoriesQuery = defineQuery(`
+  *[_type == "story" && defined(slug.current) && defined(publishedAt)] | order(publishedAt desc) {
+    title, dek, publishedAt, storyType, "slug": slug.current,
+    authors[]->{_id, name}
+  }
+`)
+
 export const searchQuery = defineQuery(`
   {
     "stories": *[_type == "story" && (title match $pattern || dek match $pattern)] | order(coalesce(publishedAt, _updatedAt) desc)[0...12] {

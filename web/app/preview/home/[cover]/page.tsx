@@ -6,8 +6,14 @@ import {client} from '@/sanity/client'
 import {toHomepageView} from '@/sanity/home'
 import {homepageQuery} from '@/sanity/queries'
 import {notFound} from 'next/navigation'
+import type {Metadata} from 'next'
 
 type PageProps = {params: Promise<{cover: string}>}
+
+export const metadata: Metadata = {
+  title: 'Cover preview — The World From Below',
+  robots: {index: false, follow: false},
+}
 
 export default async function HomeCoverPreviewPage({params}: PageProps) {
   const {cover} = await params

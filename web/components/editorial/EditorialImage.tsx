@@ -30,7 +30,7 @@ type Props = {
   caption?: boolean
 }
 
-export function EditorialImage({image, presentation, preview = true, caption = true}: Props) {
+export function EditorialImage({image, presentation, preview = false, caption = true}: Props) {
   const value = image as EditorialImageFields
   const state = imagePublicationState(value)
   const src = editorialImageSrc(value, WIDTHS[presentation][1])

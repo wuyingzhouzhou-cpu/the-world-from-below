@@ -14,8 +14,8 @@ type PageProps = {params: Promise<{slug: string}>}
 export async function generateMetadata({params}: PageProps) {
   const {slug} = await params
   const raw = await client.fetch(placeBySlugQuery, {slug})
-  if (!raw) return {title: 'Place'}
-  return pageMetadata({title: `${raw.name} — The World From Below`, description: raw.summary})
+  if (!raw) notFound()
+  return pageMetadata({title: `${raw.name} — The World From Below`, description: raw.summary, path: `/places/${slug}`})
 }
 
 export default async function PlaceDetailPage({params}: PageProps) {

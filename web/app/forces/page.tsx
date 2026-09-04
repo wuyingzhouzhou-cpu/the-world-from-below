@@ -9,6 +9,7 @@ export async function generateMetadata() {
   return pageMetadata({
     title: 'Forces — The World From Below',
     description: 'Lenses for understanding what shapes ordinary life.',
+    path: '/forces',
   })
 }
 

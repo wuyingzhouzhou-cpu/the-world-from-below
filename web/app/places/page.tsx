@@ -10,6 +10,7 @@ export async function generateMetadata() {
   return pageMetadata({
     title: 'Places — The World From Below',
     description: 'Geographic entry points into ordinary life.',
+    path: '/places',
   })
 }
 

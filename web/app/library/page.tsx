@@ -19,6 +19,7 @@ export async function generateMetadata() {
   return pageMetadata({
     title: 'Library — The World From Below',
     description: 'Books, films, and photography that attend to ordinary life.',
+    path: '/library',
   })
 }
 

@@ -1,6 +1,7 @@
 import type {StoryViewModel} from '@/sanity/story'
 import {STORY_TYPE_LABELS} from '@/sanity/story'
-import {editorialImageSrc, imagePublicationState, type EditorialImageFields} from '@/sanity/image'
+import {COVER_IMAGE_WIDTHS, coverImageSizes} from '@/lib/coverImage'
+import {editorialImageSrc, imagePublicationState, srcsetFor, type EditorialImageFields} from '@/sanity/image'
 import {StoryMarginalia} from './StoryMarginalia'
 
 function formatPublishedAt(value?: string) {
@@ -53,17 +54,18 @@ export function StoryHeader({story}: {story: StoryViewModel}) {
 
 function Hero({image}: {image: EditorialImageFields}) {
   const state = imagePublicationState(image)
-  const src = editorialImageSrc(image, 1600)
+  const src = editorialImageSrc(image, 1440)
+  const srcset = srcsetFor(image, [...COVER_IMAGE_WIDTHS])
   const caption = image.caption || image.alt || ''
+
+  if (state.withheld) return null
 
   return (
     <div className="story-hero-block">
       <div className="story-hero">
-        {state.withheld ? (
-          <div className="image-withheld">Image withheld — rights unknown (development only)</div>
-        ) : src ? (
+        {src ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={src} alt={image.alt || ''} />
+          <img src={src} srcSet={srcset} sizes={coverImageSizes('photo')} alt={image.alt || ''} />
         ) : (
           <div className="image-withheld">No image yet</div>
         )}

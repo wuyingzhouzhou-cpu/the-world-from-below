@@ -12,10 +12,11 @@ type PageProps = {params: Promise<{slug: string}>}
 export async function generateMetadata({params}: PageProps) {
   const {slug} = await params
   const raw = await client.fetch(libraryItemBySlugQuery, {slug})
-  if (!raw) return {title: 'Library'}
+  if (!raw) notFound()
   return pageMetadata({
     title: `${raw.title} — The World From Below`,
     description: raw.whyICame || raw.creator,
+    path: `/library/${slug}`,
   })
 }
 

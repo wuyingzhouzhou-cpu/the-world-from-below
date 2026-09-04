@@ -15,7 +15,11 @@ const FILTERS: {label: string; value?: StoryType}[] = [
 type PageProps = {searchParams: Promise<{type?: string}>}
 
 export async function generateMetadata(): Promise<ReturnType<typeof pageMetadata>> {
-  return pageMetadata({title: 'Stories — The World From Below', description: 'Features, essays, and field notes.'})
+  return pageMetadata({
+    title: 'Stories — The World From Below',
+    description: 'Features, essays, and field notes.',
+    path: '/stories',
+  })
 }
 
 export default async function StoriesIndexPage({searchParams}: PageProps) {

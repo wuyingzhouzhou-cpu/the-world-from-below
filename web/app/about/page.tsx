@@ -9,6 +9,7 @@ export async function generateMetadata() {
   return pageMetadata({
     title: `About — ${settings.title}`,
     description: settings.question || settings.tagline,
+    path: '/about',
   })
 }
 

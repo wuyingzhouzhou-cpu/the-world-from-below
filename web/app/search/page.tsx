@@ -13,6 +13,8 @@ export async function generateMetadata({searchParams}: PageProps) {
   return pageMetadata({
     title: query ? `Search: ${query} — The World From Below` : 'Search — The World From Below',
     description: 'Search stories, places, forces, and library items.',
+    path: '/search',
+    robots: {index: false, follow: true},
   })
 }
 
