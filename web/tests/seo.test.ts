@@ -56,6 +56,22 @@ test('RSS lists newest stories first with absolute links', () => {
   assert.doesNotMatch(String(xml), /\/preview\//)
 })
 
+test('RSS skips null author joins from Sanity', () => {
+  const xml = buildRssXml(
+    [
+      {
+        title: 'Dated',
+        slug: 'dated',
+        publishedAt: '2026-09-01T00:00:00.000Z',
+        authors: [null, {name: 'Yunzhou'}],
+      },
+    ],
+    {title: 'The World From Below', env: prodConfigured},
+  )
+  assert.match(String(xml), /Yunzhou/)
+  assert.match(String(xml), /dated/)
+})
+
 test('RSS omits placeholder authors and stories without dates', () => {
   const xml = buildRssXml(
     [

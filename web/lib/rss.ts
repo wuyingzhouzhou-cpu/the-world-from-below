@@ -6,7 +6,7 @@ export type RssStory = {
   dek?: string
   publishedAt?: string
   storyType?: string
-  authors?: {name?: string}[]
+  authors?: ({name?: string} | null | undefined)[]
 }
 
 function xmlEscape(value: string): string {
@@ -36,7 +36,7 @@ export function rssItemXml(story: RssStory, env: SiteEnv = process.env): string 
   const link = absoluteUrl(`/stories/${slug}`, env)
   if (!link) return undefined
   const authors = (story.authors || [])
-    .map((author) => displayableAuthor(author.name))
+    .map((author) => displayableAuthor(author?.name))
     .filter((name): name is string => Boolean(name))
   const description = story.dek?.trim()
   const category = story.storyType?.trim()

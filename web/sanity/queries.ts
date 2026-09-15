@@ -215,7 +215,7 @@ export const sitemapDocumentsQuery = defineQuery(`
 export const rssStoriesQuery = defineQuery(`
   *[_type == "story" && defined(slug.current) && defined(publishedAt)] | order(publishedAt desc) {
     title, dek, publishedAt, storyType, "slug": slug.current,
-    authors[]->{_id, name}
+    "authors": authors[]->{_id, name}[defined(_id)]
   }
 `)
 
