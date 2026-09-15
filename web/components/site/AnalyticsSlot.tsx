@@ -1,7 +1,6 @@
-/**
- * Future analytics belong here — a single mount in the root layout.
- * Do not inject third-party scripts until a provider is actually configured.
- */
+import {Analytics} from '@vercel/analytics/next'
+
+/** Single analytics mount for the publication. Do not add tags on individual pages. */
 export function AnalyticsSlot() {
-  return null
+  return <Analytics />
 }

@@ -1,7 +1,7 @@
-# Analytics readiness
+# Analytics
 
-No analytics product is configured. Do not add PostHog, GA, or similar until you choose one.
+Vercel Web Analytics is mounted once in `web/components/site/AnalyticsSlot.tsx` via the root layout.
 
-The root layout mounts `web/components/site/AnalyticsSlot.tsx`, which currently returns `null`. When you have a real provider, put the script or tag there only — do not scatter tags across pages.
+Hobby includes visitor and page-view counts (about 50,000 events per month). Do not add Google Analytics, PostHog, or a public dashboard on the publication.
 
-No dashboard belongs in this publication.
+Enable the feature in the Vercel project under **Analytics**, then deploy. Numbers appear after people browse the live site.
