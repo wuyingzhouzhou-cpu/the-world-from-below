@@ -38,10 +38,38 @@ export default async function PlaceDetailPage({params}: PageProps) {
           {place.summary ? <p>{place.summary}</p> : null}
         </header>
         {place.image && editorialImageSrc(place.image as EditorialImageFields, 1400) ? (
-          <div className="cover-photo">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={editorialImageSrc(place.image as EditorialImageFields, 1400)} alt={place.name} />
-          </div>
+          <>
+            <div className="cover-photo">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={editorialImageSrc(place.image as EditorialImageFields, 1400)}
+                alt={
+                  typeof (place.image as EditorialImageFields).alt === 'string' &&
+                  (place.image as EditorialImageFields).alt
+                    ? String((place.image as EditorialImageFields).alt)
+                    : place.name
+                }
+              />
+            </div>
+            {(place.image as EditorialImageFields).caption ||
+            (place.image as EditorialImageFields).credit ? (
+              <p className="marginalia cover-photo-credit">
+                <span>
+                  {[
+                    (place.image as EditorialImageFields).caption,
+                    (place.image as EditorialImageFields).credit
+                      ? `Credit: ${(place.image as EditorialImageFields).credit}`
+                      : undefined,
+                    (place.image as EditorialImageFields).source
+                      ? `Source: ${(place.image as EditorialImageFields).source}`
+                      : undefined,
+                  ]
+                    .filter(Boolean)
+                    .join(' · ')}
+                </span>
+              </p>
+            ) : null}
+          </>
         ) : null}
         <div className="band-inner">
           {place.forces.length ? (
