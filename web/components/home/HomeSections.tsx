@@ -28,15 +28,47 @@ function FeaturedBand({home}: {home: HomepageView}) {
     <section className="band">
       <div className="triptych">
         {note ? (
-          <Link href={`/stories/${note.slug}`} className="triptych-panel triptych-panel--ink">
-            <div>
-              <StoryMarginalia lines={[`Field Note${note.noteNumber ? ` · ${note.noteNumber}` : ''}`]} />
-              <h3 style={{fontFamily: 'var(--font-editorial)', fontSize: '1.35rem', lineHeight: 1.32, marginTop: 20}}>
-                {note.title}
-              </h3>
-            </div>
-            <span className="quiet-link">Read →</span>
-          </Link>
+          editorialImageSrc(note.hero as EditorialImageFields | undefined, 900) ? (
+            <Link href={`/stories/${note.slug}`} className="triptych-panel triptych-panel--photo">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={editorialImageSrc(note.hero as EditorialImageFields, 900)}
+                alt={
+                  typeof note.hero?.alt === 'string' && note.hero.alt
+                    ? note.hero.alt
+                    : note.title
+                }
+              />
+              <div className="triptych-photo-copy">
+                <StoryMarginalia
+                  lines={[`Field Note${note.noteNumber ? ` · ${note.noteNumber}` : ''}`]}
+                />
+                <h3
+                  style={{
+                    fontFamily: 'var(--font-editorial)',
+                    fontSize: '1.35rem',
+                    lineHeight: 1.32,
+                    marginTop: 20,
+                  }}
+                >
+                  {note.title}
+                </h3>
+                <span className="quiet-link" style={{display: 'inline-block', marginTop: 20}}>
+                  Read →
+                </span>
+              </div>
+            </Link>
+          ) : (
+            <Link href={`/stories/${note.slug}`} className="triptych-panel triptych-panel--ink">
+              <div>
+                <StoryMarginalia lines={[`Field Note${note.noteNumber ? ` · ${note.noteNumber}` : ''}`]} />
+                <h3 style={{fontFamily: 'var(--font-editorial)', fontSize: '1.35rem', lineHeight: 1.32, marginTop: 20}}>
+                  {note.title}
+                </h3>
+              </div>
+              <span className="quiet-link">Read →</span>
+            </Link>
+          )
         ) : null}
         {book ? (
           <Link href={`/library/${book.slug}`} className="triptych-panel triptych-panel--card">
